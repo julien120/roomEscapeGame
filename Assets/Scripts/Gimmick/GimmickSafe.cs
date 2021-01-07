@@ -15,6 +15,7 @@ public class GimmickSafe : MonoBehaviour
         if(hasKey == true)
         {
             OpenDoor();
+            ItemBox.instance.UseItem(ItemManager.Item.Key);
         }
         else
         {

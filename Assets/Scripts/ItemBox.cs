@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemBox : MonoBehaviour
 {
     [SerializeField] GameObject[] boxes;
+    //[SerializeField] SaveManager saveManager;
 
     public static ItemBox instance;
 
@@ -15,14 +16,19 @@ public class ItemBox : MonoBehaviour
         {
             instance = this;
         }
+        //saveManager.Awa();
+        for (int i = 0; i < boxes.Length; i++)
+        {
+            boxes[i].SetActive(false);
+        }
     }
 
     private void Start()
     {
-        for(int i=0; i<boxes.Length; i++)
-        {
-            boxes[i].SetActive(false);
-        }
+        
+
+        //デーブデータがあると表示する
+
     }
 
 
@@ -34,7 +40,10 @@ public class ItemBox : MonoBehaviour
     {
         int index = (int)item;
         boxes[index].SetActive(true);
+        SaveManager.instance.SetItemData(item);
     }
+
+
 
     public bool CanUseItem(ItemManager.Item item)
     {
@@ -50,5 +59,6 @@ public class ItemBox : MonoBehaviour
     {
         int index = (int)item;
         boxes[index].SetActive(false);
+        SaveManager.instance.SetUseData(item);
     }
 }
