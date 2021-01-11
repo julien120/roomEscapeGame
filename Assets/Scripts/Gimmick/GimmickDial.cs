@@ -70,6 +70,7 @@ public class GimmickDial : MonoBehaviour
     private void ClearMark()
     {
         //ロッカーを開ける
+        ConversationManager.instance.ShowMessage("ロッカーが開いた");
         ClearEvent.Invoke();
     }
 

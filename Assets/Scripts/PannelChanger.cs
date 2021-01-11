@@ -139,6 +139,7 @@ public class PannelChanger : MonoBehaviour
     /// <param name="panel"></param>
     private void Show(Panel panel)
     {
+        ConversationManager.instance.HideMessageUI();
         HideArrows();
         currentPanel = panel;
         switch (panel)

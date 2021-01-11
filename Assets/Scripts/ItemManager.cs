@@ -10,7 +10,7 @@ public class ItemManager : MonoBehaviour
         Key,
         Card,
         Hammer,
-        paper,
+        Paper,
         Max,
     }
 
@@ -33,10 +33,28 @@ public class ItemManager : MonoBehaviour
     }
 
     //クリックされた時にオブジェクトを消して、Item Boxに追加する
-
     public void ClickedItem()
     {
         SetItem();
+        ConversationManager.instance.ShowMessage(itemName(item)+"を手に入れた");
+    }
+
+    private string itemName(Item item)
+    {
+        switch (item)
+        {
+            case Item.Leaf:
+                return "葉っぱ";
+            case Item.Key:
+                return "金庫の鍵";
+            case Item.Card:
+                return "エレベータキー";
+            case Item.Hammer:
+                return "ハンマー";
+            case Item.Paper:
+                return "焦げた紙";
+        }
+        return "";
     }
 
     private void SetItem()

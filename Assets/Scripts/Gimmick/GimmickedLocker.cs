@@ -15,11 +15,17 @@ public class GimmickedLocker : MonoBehaviour
         {
             OpenLocker();
         }
+        else
+        {
+
+        }
     }
 
     public void OpenLocker()
     {
         door.SetActive(true);
+        //fix:setGimmickを登録するとそのままアイテムをとったことになる
         SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenLocker);
+
     }
 }

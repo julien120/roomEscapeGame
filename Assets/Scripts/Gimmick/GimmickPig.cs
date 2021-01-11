@@ -6,17 +6,27 @@ public class GimmickPig : MonoBehaviour
 {
     [SerializeField] GameObject piggy;
 
+    void Start()
+    {
+        bool clearGimmick = SaveManager.instance.GetGimmick(SaveManager.Gimmick.BrokenPig);
+        if (clearGimmick == true)
+        {
+            BrokePiggy();
+        }
+    }
+
     public void DestroyPiggy()
     {
         bool hashammer = ItemBox.instance.CanUseItem(ItemManager.Item.Hammer);
         if (hashammer == true)
         {
+            SaveManager.instance.SetGimmick(SaveManager.Gimmick.BrokenPig);
             BrokePiggy();
             ItemBox.instance.UseItem(ItemManager.Item.Hammer);
         }
         else
         {
-            Debug.Log("鍵がかかってる");
+            ConversationManager.instance.ShowMessage("壊せそうだ");
         }
     }
 

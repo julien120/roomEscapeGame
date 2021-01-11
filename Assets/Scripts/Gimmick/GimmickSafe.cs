@@ -9,11 +9,21 @@ public class GimmickSafe : MonoBehaviour
 
     [SerializeField] GameObject door;
 
+    void Start()
+    {
+        bool clearGimmick = SaveManager.instance.GetGimmick(SaveManager.Gimmick.OpenSafe);
+        if (clearGimmick == true)
+        {
+            OpenDoor();
+        }
+    }
+
     public void OpenSafe()
     {
         bool hasKey = ItemBox.instance.CanUseItem(ItemManager.Item.Key);
         if(hasKey == true)
         {
+            SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenSafe);
             OpenDoor();
             ItemBox.instance.UseItem(ItemManager.Item.Key);
         }

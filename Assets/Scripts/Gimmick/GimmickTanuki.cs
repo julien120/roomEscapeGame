@@ -15,7 +15,12 @@ public class GimmickTanuki : MonoBehaviour
         if(hasLeaf == true)
         {
             MovedTanuki();
+            ConversationManager.instance.ShowMessage("たぬきは葉っぱで消えた");
             ItemBox.instance.UseItem(ItemManager.Item.Leaf);
+        }
+        else
+        {
+            ConversationManager.instance.ShowMessage("葉っぱを持ってない");
         }
     }
 
@@ -37,8 +42,9 @@ public class GimmickTanuki : MonoBehaviour
 
     private void MovedTanuki()
     {
-        gameObject.SetActive(false);
+       
         moved = true;
         SaveManager.instance.SetGimmick(SaveManager.Gimmick.MovedTanuki);
+        gameObject.SetActive(false);
     }
 }

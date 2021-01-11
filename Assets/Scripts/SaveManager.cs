@@ -13,13 +13,15 @@ public class SaveManager : MonoBehaviour
         MovedTanuki,
         MovedTea,
         OpenSafe,
+        BrokenPig,
+        OpenedFireHy,
+        OpenElevator,
         Max,
     }
 
 
     public void Awake()
     {
-        Debug.Log("save");
         instance = this;
         Load();
         
@@ -82,14 +84,14 @@ public class SaveManager : MonoBehaviour
     public void SetGimmick(Gimmick gimmick)
     {
         int index = (int)gimmick;
-        saveData.getItems[index] = true;
+        saveData.gimmick[index] = true;
         Save();
     }
 
     public bool GetGimmick(Gimmick gimmick)
     {
         int index = (int)gimmick;
-        return saveData.getItems[index];
+        return saveData.gimmick[index];
     }
 
 }

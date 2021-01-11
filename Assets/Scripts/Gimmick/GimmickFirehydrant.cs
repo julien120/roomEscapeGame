@@ -24,6 +24,15 @@ public class GimmickFirehydrant : MonoBehaviour
 
     private List<Direction> userInputs = new List<Direction>();
 
+    void Start()
+    {
+        bool clearGimmick = SaveManager.instance.GetGimmick(SaveManager.Gimmick.OpenedFireHy);
+        if (clearGimmick == true)
+        {
+            door.SetActive(true);
+        }
+    }
+
     /// <summary>
     /// ユーザーの入力をuserInputsに代入し、正解の順番と照合する
     /// </summary>
@@ -65,11 +74,13 @@ public class GimmickFirehydrant : MonoBehaviour
 
     private void Clear()
     {
+        SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenedFireHy);
         door.SetActive(true);
     }
 
     private void ResetInput()
     {
+        ConversationManager.instance.ShowMessage("間違ってるようだ");
         userInputs.Clear();
     }
 }
