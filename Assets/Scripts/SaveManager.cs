@@ -6,6 +6,7 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager instance;
+    
 
     public enum Gimmick
     {
@@ -44,7 +45,7 @@ public class SaveManager : MonoBehaviour
     /// <summary>
     /// PlayerPrefsでjsonを取得し、jsonをクラス変換する
     /// </summary>
-    private void Load()
+    public void Load()
     {
         saveData = new SaveData();
         if(PlayerPrefs.HasKey(Save_Key) == true)
@@ -52,6 +53,17 @@ public class SaveManager : MonoBehaviour
             string json = PlayerPrefs.GetString(Save_Key);
             saveData = JsonUtility.FromJson<SaveData>(json);
         }
+    }
+
+    public bool HasSaveData()
+    {
+        return PlayerPrefs.HasKey(Save_Key);
+    }
+
+    public void CreateNewData()
+    {
+        PlayerPrefs.DeleteKey(Save_Key);
+        saveData = new SaveData();
     }
 
     public void SetItemData(ItemManager.Item item)

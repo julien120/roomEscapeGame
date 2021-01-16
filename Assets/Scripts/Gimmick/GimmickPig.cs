@@ -20,6 +20,7 @@ public class GimmickPig : MonoBehaviour
         bool hashammer = ItemBox.instance.CanUseItem(ItemManager.Item.Hammer);
         if (hashammer == true)
         {
+            AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
             SaveManager.instance.SetGimmick(SaveManager.Gimmick.BrokenPig);
             BrokePiggy();
             ItemBox.instance.UseItem(ItemManager.Item.Hammer);

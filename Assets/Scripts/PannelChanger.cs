@@ -30,7 +30,8 @@ public class PannelChanger : MonoBehaviour
 
     private void Start()
     {
-        Show(Panel.Panel0);
+        Init();
+        //Show(Panel.Panel0);
     }
 
     /// <summary>
@@ -133,12 +134,22 @@ public class PannelChanger : MonoBehaviour
         Show(Panel.Panel2);
     }
 
+    private void Init()
+    {
+        ConversationManager.instance.HideMessageUI();
+        HideArrows();
+        currentPanel = Panel.Panel0;
+        rightArrow.SetActive(true);
+        transform.localPosition = new Vector2(0, 0);
+    }
+
     /// <summary>
     /// アニメーションでシーンを切り替えてるかのように見えるパネル切り替え
     /// </summary>
     /// <param name="panel"></param>
     private void Show(Panel panel)
     {
+        AudioManager.instance.PlaySE(AudioManager.SES.Button);
         ConversationManager.instance.HideMessageUI();
         HideArrows();
         currentPanel = panel;

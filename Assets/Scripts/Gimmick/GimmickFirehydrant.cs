@@ -74,6 +74,7 @@ public class GimmickFirehydrant : MonoBehaviour
 
     private void Clear()
     {
+        AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
         SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenedFireHy);
         door.SetActive(true);
     }

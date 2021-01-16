@@ -11,7 +11,7 @@ public class ItemBox : MonoBehaviour
 
     private void Awake()
     {
-        //共通の変数を設け、且つ複数インスタンス化しないためにやってる？
+        
         if(instance == null)
         {
             instance = this;

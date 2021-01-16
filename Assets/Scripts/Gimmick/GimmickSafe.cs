@@ -23,6 +23,7 @@ public class GimmickSafe : MonoBehaviour
         bool hasKey = ItemBox.instance.CanUseItem(ItemManager.Item.Key);
         if(hasKey == true)
         {
+            AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
             SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenSafe);
             OpenDoor();
             ItemBox.instance.UseItem(ItemManager.Item.Key);

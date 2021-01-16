@@ -28,6 +28,7 @@ public class GimmickTeaServaer : MonoBehaviour
         bool movedTanuki = tanuki.moved;
         if(movedTanuki == true)
         {
+            AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
             SaveManager.instance.SetGimmick(SaveManager.Gimmick.MovedTea);
             MovedTeaServer();
         }

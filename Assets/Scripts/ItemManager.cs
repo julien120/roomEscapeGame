@@ -35,6 +35,7 @@ public class ItemManager : MonoBehaviour
     //クリックされた時にオブジェクトを消して、Item Boxに追加する
     public void ClickedItem()
     {
+        AudioManager.instance.PlaySE(AudioManager.SES.GetItem);
         SetItem();
         ConversationManager.instance.ShowMessage(itemName(item)+"を手に入れた");
     }

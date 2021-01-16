@@ -23,6 +23,7 @@ public class GimmickedLocker : MonoBehaviour
 
     public void OpenLocker()
     {
+        AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
         door.SetActive(true);
         //fix:setGimmickを登録するとそのままアイテムをとったことになる
         SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenLocker);

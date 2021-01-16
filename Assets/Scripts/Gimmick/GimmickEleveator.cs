@@ -36,6 +36,7 @@ public class GimmickEleveator : MonoBehaviour
         bool haskey = ItemBox.instance.CanUseItem(ItemManager.Item.Card);
         if(haskey == true)
         {
+            AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
             OpenDoor();
             SaveManager.instance.SetGimmick(SaveManager.Gimmick.OpenElevator);
             ItemBox.instance.UseItem(ItemManager.Item.Card);

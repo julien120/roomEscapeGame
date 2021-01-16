@@ -69,6 +69,7 @@ public class GimmickDial : MonoBehaviour
 
     private void ClearMark()
     {
+        AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
         //ロッカーを開ける
         ConversationManager.instance.ShowMessage("ロッカーが開いた");
         ClearEvent.Invoke();

@@ -14,6 +14,7 @@ public class GimmickTanuki : MonoBehaviour
         bool hasLeaf = ItemBox.instance.CanUseItem(ItemManager.Item.Leaf); 
         if(hasLeaf == true)
         {
+            AudioManager.instance.PlaySE(AudioManager.SES.GimmickClear);
             MovedTanuki();
             ConversationManager.instance.ShowMessage("たぬきは葉っぱで消えた");
             ItemBox.instance.UseItem(ItemManager.Item.Leaf);

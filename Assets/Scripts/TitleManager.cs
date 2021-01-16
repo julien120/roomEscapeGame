@@ -5,20 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject continuButton;
+    /// <summary>
+    /// セーブデータがなければ、続きからボタンを表示しない
+    /// </summary>
+    private void Start()
     {
-        
+        AudioManager.instance.PlayBGM(AudioManager.BGMS.Title);
+        bool hasSaveData = SaveManager.instance.HasSaveData();
+        if(hasSaveData == true)
+        {
+            continuButton.SetActive(true);
+        }
+        else
+        {
+            continuButton.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartButton()
     {
-        
+        AudioManager.instance.PlaySE(AudioManager.SES.Button);
+        SaveManager.instance.CreateNewData();
+        ToMainScene();
     }
 
-    public void ToMainScene()
+
+    public void LoadDataButton()
     {
-        SceneManager.LoadScene("Ttitle");
+        SaveManager.instance.Load();
+        ToMainScene();
+    }
+
+    private void ToMainScene()
+    {
+        SceneController.Instance.LoadMainScene();
+    }
+
+    public void ToClearScene()
+    {
+        SceneController.Instance.LoadClearScene();
+    }
+
+
+    public void ToTitleScene()
+    {
+        SceneController.Instance.LoadTitleScene();
     }
 }
